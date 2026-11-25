@@ -1,21 +1,10 @@
 exports.handler = async function() {
   try {
-    const gRes = await fetch("https://gold-api.com");
-    const gJson = await gRes.json();
-    const fRes = await fetch("https://er-api.com");
-    const fJson = await fRes.json();
-    const xau = gJson && gJson.price;
-    const twd = fJson && fJson.rates && fJson.rates.TWD;
-    if (xau > 0 && twd > 0) {
-      const qian = Math.round((xau * twd / 31.1034768) * 3.75);
-      return {
-        statusCode: 200,
-        headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
-        body: JSON.stringify({ qian: qian })
-      };
+    const g = await (await fetch("https://gold-api.com")).json();
+    const f = await (await fetch("https://er-api.com")).json();
+    if (g.price > 0 && f.rates.TWD > 0) {
+      return { statusCode: 200, body: JSON.stringify({ qian: Math.round((g.price * f.rates.TWD / 31.1034768) * 3.75) }) };
     }
-    return { statusCode: 500, body: JSON.stringify({ error: "no_data" }) };
-  } catch (e) {
-    return { statusCode: 500, body: JSON.stringify({ error: e.message }) };
-  }
+    return { statusCode: 500, body: "{}" };
+  } catch (e) { return { statusCode: 500, body: "{}" }; }
 };

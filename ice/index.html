@@ -1,94 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Ice的小金庫" />
-<title>Ice的小金庫</title>
-<link rel="apple-touch-icon" href="icon.png" />
-<style>
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;padding:env(safe-area-inset-top) 16px 100px;background:#0b0b0c;color:#f5f5f7;font-family:-apple-system,"PingFang TC",sans-serif}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 4px 12px}
-.tw{display:flex;align-items:center;gap:10px}
-.bb{width:42px;height:42px;border-radius:12px;border:1.5px solid #d4af37;background:#181612;display:flex;align-items:center;justify-content:center;overflow:hidden}
-h1{margin:0;font-size:22px;background:linear-gradient(135deg,#f3d98b,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.ib{background:#161618;border:1px solid #2c2618;color:#f3d98b;font-size:12px;padding:6px 10px;border-radius:8px;margin-left:4px}
-.sc{background:linear-gradient(145deg,#1d1a14,#121214);border:1px solid #9c7c21;border-radius:20px;padding:18px;margin-bottom:16px}
-.pb{background:rgba(0,0,0,.4);padding:10px 12px;border-radius:12px;border:1px solid #2b2516;margin-bottom:14px}
-.pb-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.pb label{font-size:13px;color:#f3d98b;white-space:nowrap}
-.pb-right{display:flex;align-items:center;gap:6px}
-.pb input{width:105px;background:#0d0d0e;border:1px solid #9c7c21;color:#f3d98b;border-radius:8px;padding:6px 8px;font-size:15px;font-weight:600;text-align:right}
-.sync-btn{background:#241f14;border:1px solid #9c7c21;color:#f3d98b;font-size:12px;padding:6px 9px;border-radius:8px;white-space:nowrap}
-.pb-status{font-size:11px;color:#9a9a9e;margin-top:6px;display:flex;justify-content:space-between}
-.sg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.sb{background:rgba(255,255,255,.04);padding:12px;border-radius:14px}
-.sl{font-size:12px;color:#9a9a9e;margin-bottom:4px}
-.sv{font-size:18px;font-weight:700;color:#f3d98b}
-.ss{font-size:11px;color:#9a9a9e;margin-top:2px}
-.st{font-size:14px;color:#9a9a9e;margin:16px 4px 10px;display:flex;justify-content:space-between}
-.ic{background:#161618;border:1px solid #2c2618;border-radius:16px;padding:14px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start}
-.it{width:68px;height:68px;border-radius:12px;object-fit:cover;background:#1a1710;border:1px solid #4a3c1b;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.ii{flex:1;min-width:0}
-.itp{display:flex;justify-content:space-between;align-items:center}
-.iw{font-size:16px;font-weight:700;color:#f3d98b}
-.id{font-size:12px;color:#9a9a9e}
-.ip{font-size:13px;margin-top:6px;line-height:1.55}
-.in{font-size:12px;color:#9a9a9e;margin-top:6px;background:rgba(255,255,255,.04);padding:6px 8px;border-radius:8px;word-break:break-word}
-.db{background:none;border:none;color:#888;font-size:18px;padding:4px}
-.fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#f3d98b,#d4af37);color:#111;border:none;border-radius:99px;padding:15px 30px;font-size:16px;font-weight:700;box-shadow:0 8px 20px rgba(212,175,55,.4);z-index:10}
-.md{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:50;align-items:flex-end;justify-content:center}
-.md.active{display:flex}
-.ms{background:#161618;border-top:1px solid #9c7c21;width:100%;max-width:500px;border-radius:24px 24px 0 0;padding:20px 20px 30px;max-height:90vh;overflow-y:auto}
-.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.mh h2{margin:0;font-size:18px;color:#f3d98b}
-.fg{margin-bottom:14px}
-.fg label{display:block;font-size:13px;color:#9a9a9e;margin-bottom:6px}
-.r2{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
-input,select,textarea{width:100%;background:#0e0e10;border:1px solid #332e22;color:#f5f5f7;border-radius:12px;padding:12px;font-size:16px;outline:none}
-.calc-hint{font-size:12px;color:#f3d98b;margin-top:6px;text-align:right}
-.pp{width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin-top:8px;display:none;border:1px solid #9c7c21}
-.sub{width:100%;padding:14px;border-radius:14px;border:none;background:linear-gradient(135deg,#f3d98b,#d4af37);color:#111;font-size:16px;font-weight:700;margin-top:8px}
-.et{text-align:center;color:#9a9a9e;padding:40px 20px;font-size:14px}
-.iv{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;align-items:center;justify-content:center;padding:20px}
-.iv.active{display:flex}
-.iv img{max-width:100%;max-height:85vh;border-radius:14px;border:1px solid #d4af37}
-</style>
-</head>
-<body>
-<header>
-  <div class="tw"><div class="bb" id="hb"></div><h1>Ice的小金庫</h1></div>
-  <div><button class="ib" id="bEx" type="button">備份</button><button class="ib" id="bIm" type="button">還原</button><input type="file" id="imF" accept=".json" style="display:none" /></div>
-</header>
-<div class="sc">
-  <div class="pb">
-    <div class="pb-top"><label>今日牌價 (元/台錢)</label><div class="pb-right"><input type="number" id="cp" inputmode="decimal" placeholder="抓報價中..." /><button class="sync-btn" id="bSync" type="button">↻ 即時</button></div></div>
-    <div class="pb-status"><span id="priceMode">載入最新國際金價中...</span><span id="gramPriceHint"></span></div>
-  </div>
-  <div class="sg">
-    <div class="sb"><div class="sl">總持有重量</div><div class="sv" id="tq">0.00 台錢</div><div class="ss" id="tg">約 0.00 公克 (g)</div></div>
-    <div class="sb"><div class="sl">目前預估市值</div><div class="sv" id="tm">$0</div><div class="ss" id="tp">損益 $0</div></div>
-    <div class="sb" style="grid-column:span 2;display:flex;justify-content:space-between;align-items:center"><div><div class="sl" style="margin:0">總買入成本</div><div class="ss" id="avgQian">平均成本 $0 / 台錢</div></div><span class="sv" style="font-size:17px;color:#fff" id="tc">$0</span></div>
-  </div>
-</div>
-<div class="st"><span>藏金明細</span><span id="rc">0 筆</span></div>
-<div id="lc"></div>
-<button class="fab" id="bOpen" type="button">＋ 存入新金塊</button>
-<div class="md" id="md">
-  <div class="ms">
-    <div class="mh"><h2>存入新金塊</h2><button class="db" id="bClose" type="button">✕</button></div>
-    <div class="fg"><label>購買日期</label><input type="date" id="fD" /></div>
-    <div class="fg"><label>重量與單位</label><div class="r2"><input type="number" id="fW" step="any" inputmode="decimal" placeholder="輸入數字" /><select id="fU"><option value="qian">台錢 (1錢=3.75g)</option><option value="g">公克 (g)</option><option value="liang">台兩 (1兩=10錢)</option><option value="oz">盎司 (1oz=31.1035g)</option></select></div></div>
-    <div class="fg"><label>買入總金額 (台幣)</label><input type="number" id="fC" inputmode="numeric" placeholder="例如 11500" /><div class="calc-hint" id="unitHint">換算單價：$0 / 台錢</div></div>
-    <div class="fg"><label>照片 (金塊/保單/發票)</label><input type="file" id="fP" accept="image/*" /><img id="pp" class="pp" /></div>
-    <div class="fg"><label>備註 (品牌、純度、工錢等)</label><textarea id="fN" rows="2" placeholder="例如：煌隆 999.9 黃金條塊 1錢"></textarea></div>
-    <button class="sub" id="bSave" type="button">放入小金庫</button>
-  </div>
-</div>
-<div class="iv" id="iv"><img id="vi" src="" /></div>
 <script>
 var snowSVG="<svg xmlns='http://w3.org' viewBox='0 0 512 512'><rect width='512' height='512' rx='110' fill='#111113'/><circle cx='256' cy='256' r='222' fill='none' stroke='#d4af37' stroke-width='10' opacity='0.85'/><g stroke='#f3d98b' stroke-width='16' stroke-linecap='round' fill='none'><line x1='256' y1='96' x2='256' y2='416'/><line x1='117' y1='176' x2='395' y2='336'/><line x1='395' y1='176' x2='117' y2='336'/><polyline points='220,136 256,172 292,136'/><polyline points='220,376 256,340 292,376'/><polyline points='136,222 184,214 176,166'/><polyline points='376,290 328,298 336,346'/><polyline points='336,166 328,214 376,222'/><polyline points='176,346 184,298 136,290'/></g><circle cx='256' cy='256' r='26' fill='#111113' stroke='#d4af37' stroke-width='12'/><circle cx='256' cy='256' r='8' fill='#fff'/></svg>";
 var goldBarSVG="<svg xmlns='http://w3.org' viewBox='0 0 64 64' width='40' height='40'><defs><linearGradient id='g1' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#fff1b8'/><stop offset='50%' stop-color='#d4af37'/><stop offset='100%' stop-color='#8c6b15'/></linearGradient></defs><polygon points='18,18 46,18 56,44 8,44' fill='url(#g1)' stroke='#f3d98b' stroke-width='1.5' stroke-linejoin='round'/><polygon points='21,22 43,22 49,38 15,38' fill='#fceabb' opacity='0.5'/><polygon points='8,44 56,44 53,49 11,49' fill='#7a5c10'/></svg>";
@@ -96,7 +5,6 @@ document.getElementById('hb').innerHTML=snowSVG;
 var U2G={g:1,qian:3.75,liang:37.5,oz:31.1034768},UL={g:'g',qian:'台錢',liang:'台兩',oz:'oz'},rec=[];
 try{rec=JSON.parse(localStorage.getItem('ice_gold_records')||'[]')}catch(e){}
 var photo='',cp=document.getElementById('cp'),modeEl=document.getElementById('priceMode'),gramEl=document.getElementById('gramPriceHint');
-cp.placeholder='輸入牌價';
 if(localStorage.getItem('ice_gold_price_qian')){cp.value=localStorage.getItem('ice_gold_price_qian');if(localStorage.getItem('ice_gold_is_manual')==='1')modeEl.textContent='✍️ 目前為手動自訂牌價';}
 cp.oninput=function(){localStorage.setItem('ice_gold_price_qian',cp.value);localStorage.setItem('ice_gold_is_manual','1');modeEl.textContent='✍️ 手動自訂牌價 (按右側可重抓即時)';render()};
 function applyPrice(twdQian){
@@ -106,23 +14,9 @@ function applyPrice(twdQian){
 function fetchLiveGold(force){
   if(!force && localStorage.getItem('ice_gold_is_manual')==='1' && cp.value){render();return}
   modeEl.textContent='⏳ 更新即時金價中...';
-  Promise.all([
-    fetch('/api/gold?t='+Date.now()).then(function(r){return r.json()}),
-    fetch('/api/fx?t='+Date.now()).then(function(r){return r.json()})
-  ]).then(function(res){
-    var x=res[0]&&res[0].price;
-    var u=res[1]&&res[1].rates&&res[1].rates.TWD;
-    if(x>0&&u>0){applyPrice(Math.round((x*u/31.1034768)*3.75))}else{throw new Error()}
-  }).catch(function(){
-    Promise.all([
-      fetch('https://gold-api.com').then(function(r){return r.json()}),
-      fetch('https://er-api.com').then(function(r){return r.json()})
-    ]).then(function(res){
-      var x=res[0]&&res[0].price;
-      var u=res[1]&&res[1].rates&&res[1].rates.TWD;
-      if(x>0&&u>0){applyPrice(Math.round((x*u/31.1034768)*3.75))}else{throw new Error()}
-    }).catch(function(){modeEl.textContent='⚠️ 報價暫時無法連線，請直接手動輸入';render()});
-  });
+  fetch('/.netlify/functions/gold?t='+Date.now()).then(function(r){return r.json()}).then(function(d){
+    if(d && d.qian>0){applyPrice(d.qian)}else{throw new Error()}
+  }).catch(function(){modeEl.textContent='⚠️ 報價暫時無法連線，請直接手動輸入';render()});
 }
 document.getElementById('bSync').onclick=function(){fetchLiveGold(true)};
 function updateHint(){var w=parseFloat(document.getElementById('fW').value)||0,u=document.getElementById('fU').value,c=parseFloat(document.getElementById('fC').value)||0,q=(w*(U2G[u]||1))/3.75,perQ=q>0&&c>0?Math.round(c/q):0;document.getElementById('unitHint').textContent='換算單價：$'+(perQ>0?perQ.toLocaleString():'0')+' / 台錢'}
@@ -130,12 +24,12 @@ document.getElementById('fW').oninput=updateHint;document.getElementById('fU').o
 var md=document.getElementById('md');
 document.getElementById('bOpen').onclick=function(){var t=new Date();document.getElementById('fD').value=t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2);document.getElementById('fW').value='';document.getElementById('fC').value='';document.getElementById('fN').value='';document.getElementById('fP').value='';document.getElementById('pp').style.display='none';photo='';updateHint();md.classList.add('active')};
 document.getElementById('bClose').onclick=function(){md.classList.remove('active')};
-document.getElementById('fP').onchange=function(e){var f=e.target.files&&e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){var g=new Image();g.onload=function(){var c=document.createElement('canvas'),m=800,w=g.width,h=g.height;if(w>h&&w>m){h=h*m/w;w=m}else if(h>m){w=w*m/h;h=m}c.width=w;c.height=h;c.getContext('2d').drawImage(g,0,0,w,h);photo=c.toDataURL('image/jpeg',.72);var p=document.getElementById('pp');p.src=photo;p.style.display='block'};g.src=ev.target.result};r.readAsDataURL(f)};
+document.getElementById('fP').onchange=function(e){var f=e.target.files&&e.target.files;if(!f)return;var r=new FileReader();r.onload=function(ev){var g=new Image();g.onload=function(){var c=document.createElement('canvas'),m=800,w=g.width,h=g.height;if(w>h&&w>m){h=h*m/w;w=m}else if(h>m){w=w*m/h;h=m}c.width=w;c.height=h;c.getContext('2d').drawImage(g,0,0,w,h);photo=c.toDataURL('image/jpeg',.72);var p=document.getElementById('pp');p.src=photo;p.style.display='block'};g.src=ev.target.result};r.readAsDataURL(f)};
 document.getElementById('bSave').onclick=function(){var w=parseFloat(document.getElementById('fW').value);if(!w||w<=0){alert('請輸入正確的重量喔！');return}rec.unshift({id:Date.now(),date:document.getElementById('fD').value,weight:w,unit:document.getElementById('fU').value,cost:parseFloat(document.getElementById('fC').value)||0,note:document.getElementById('fN').value.trim(),photo:photo});try{localStorage.setItem('ice_gold_records',JSON.stringify(rec));md.classList.remove('active');render()}catch(e){alert('儲存空間已滿，請先按備份');rec.shift()}};
 document.getElementById('iv').onclick=function(){this.classList.remove('active')};
 document.getElementById('bEx').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({priceQian:cp.value,records:rec})],{type:'application/json'}));a.download='Ice的小金庫備份.json';a.click()};
 document.getElementById('bIm').onclick=function(){document.getElementById('imF').click()};
-document.getElementById('imF').onchange=function(e){var f=e.target.files&&e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(ev){try{var d=JSON.parse(ev.target.result);if(Array.isArray(d.records)){rec=d.records;localStorage.setItem('ice_gold_records',JSON.stringify(rec));if(d.priceQian){cp.value=d.priceQian;localStorage.setItem('ice_gold_price_qian',d.priceQian)}render();alert('還原成功！')}}catch(x){alert('檔案格式不對')}};r.readAsText(f)};
+document.getElementById('imF').onchange=function(e){var f=e.target.files&&e.target.files;if(!f)return;var r=new FileReader();r.onload=function(ev){try{var d=JSON.parse(ev.target.result);if(Array.isArray(d.records)){rec=d.records;localStorage.setItem('ice_gold_records',JSON.stringify(rec));if(d.priceQian){cp.value=d.priceQian;localStorage.setItem('ice_gold_price_qian',d.priceQian)}render();alert('還原成功！')}}catch(x){alert('檔案格式不對')}};r.readAsText(f)};
 function render(){
   var pq=parseFloat(cp.value)||0,sg=0,sc=0,lc=document.getElementById('lc');lc.innerHTML='';
   gramEl.textContent=pq>0?'(約 $'+Math.round(pq/3.75).toLocaleString()+'/g)':'';
